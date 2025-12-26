@@ -52,13 +52,13 @@
             <a href="{{ route('admin.users.index') }}" class="nav-link">
                 <i class="bi bi-people"></i> Users
             </a>
-        </li>
+        </li> --}}
 
         <li>
-            <a href="{{ route('admin.subscriptions.index') }}" class="nav-link">
+            <a href="{{ route('admin.subscriptions') }}" class="nav-link">
                 <i class="bi bi-cash-stack"></i> Subscriptions
             </a>
-        </li> --}}
+        </li> 
 
         {{-- Cast menu --}}
         <li class="nav-item">
