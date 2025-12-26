@@ -8,3 +8,4 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 });
 
+require __DIR__.'/admin.php';

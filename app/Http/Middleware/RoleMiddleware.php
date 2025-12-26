@@ -8,21 +8,24 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        // if (!auth()->check()) {
-        //     abort(403, 'Unauthorized');
-        // }
+        if (!auth()->check()) {
+            return redirect()->route('admin.login');
+        }
 
-        // // Role mismatch
-        // if (auth()->user()->role !== $role) {
-        //     abort(403, 'Access denied');
-        // }
+        $user = auth()->user();
+
+        // Safety check
+        if (!$user) {
+            return redirect()->route('admin.login');
+        }
+
+        // Role mismatch
+        if ($user->role !== $role) {
+            abort(403, 'Access denied');
+        }
+
         return $next($request);
     }
 }
