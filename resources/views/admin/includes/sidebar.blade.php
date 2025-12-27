@@ -12,47 +12,47 @@
             </a>
         </li>
 
-        {{-- <li>
-            <a href="{{ route('admin.movies.index') }}" class="nav-link">
+        <li>
+            <a href="{{ route('admin.movie') }}" class="nav-link">
                 <i class="bi bi-film"></i> Movies
             </a>
         </li>
 
         <li>
-            <a href="{{ route('admin.homepage-sections.index') }}" class="nav-link">
+            <a href="{{ route('admin.homepagesection') }}" class="nav-link">
                 <i class="bi bi-layout-text-window-reverse"></i> Homepage Sections
             </a>
         </li>
 
         <li>
-            <a href="{{ route('admin.seasons.index') }}" class="nav-link">
+            <a href="{{ route('admin.season') }}" class="nav-link">
                 <i class="bi bi-tv"></i> Seasons
             </a>
         </li>
 
         <li>
-            <a href="{{ route('admin.episodes.index') }}" class="nav-link">
+            <a href="{{ route('admin.episodes') }}" class="nav-link">
                 <i class="bi bi-collection-play"></i> Episodes
             </a>
         </li>
 
         <li>
-            <a href="{{ route('admin.ott.index') }}" class="nav-link">
+            <a href="{{ route('admin.ott') }}" class="nav-link">
                 <i class="bi bi-app-indicator"></i> OTT Providers
             </a>
         </li>
 
         <li>
-            <a href="{{ route('admin.genres.index') }}" class="nav-link">
+            <a href="{{ route('admin.genre') }}" class="nav-link">
                 <i class="bi bi-tags"></i> Genres
             </a>
         </li>
 
         <li>
-            <a href="{{ route('admin.users.index') }}" class="nav-link">
+            <a href="{{ route('admin.users') }}" class="nav-link">
                 <i class="bi bi-people"></i> Users
             </a>
-        </li> --}}
+        </li>
 
         <li>
             <a href="{{ route('admin.subscriptions') }}" class="nav-link">
@@ -72,21 +72,21 @@
             </a>
 
             <ul class="collapse nav flex-column ms-3" id="castMenu">
-                {{-- <li>
-                    <a href="{{ route('admin.cast-roles.index') }}" class="nav-link">
+                <li>
+                    <a href="{{ route('admin.castrole') }}" class="nav-link">
                         Cast Roles
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.cast.index') }}" class="nav-link">
+                    <a href="{{ route('admin.cast') }}" class="nav-link">
                         Cast People
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.cast-content.index') }}" class="nav-link">
+                    <a href="{{ route('admin.castcontent') }}" class="nav-link">
                         Movie Cast
                     </a>
-                </li> --}}
+                </li>
             </ul>
 
         </li>

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HomepageSectionController
+class HomepageSectionController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('admin.homepagesection');
+    }
 }
