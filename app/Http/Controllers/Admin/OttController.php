@@ -11,20 +11,29 @@ class OttController extends Controller
     public function index()
     {
         $otts = OttProvider::all();
-        return view('admin.ott',compact('otts'));
+
+        return view('admin.ott', compact('otts'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'required|image'
+            'logo' => 'required|image|mimes:png,jpg,jpeg,webp',
         ]);
 
+        $filename = null;
+
+        if ($request->hasFile('logo')) {
+            $file = $request->file('logo');
+            $filename = uniqid('ott_').'.'.$file->extension();
+            $file->move(public_path('assets/images'), $filename);
+        }
+
         OttProvider::create([
-            'name'      => $request->name,
-            'logo_url'  => $request->file('logo'),
-            'is_active' => $request->has('is_active')
+            'name' => $request->name,
+            'logo_url' => $filename,
+            'is_active' => $request->has('is_active'),
         ]);
 
         return redirect()->route('admin.ott');
@@ -34,14 +43,17 @@ class OttController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image'
+            'logo' => 'nullable|image|mimes:png,jpg,jpeg,webp',
         ]);
 
         $ott->name = $request->name;
         $ott->is_active = $request->has('is_active');
 
         if ($request->hasFile('logo')) {
-            $ott->logo_url = $request->file('logo');
+            $file = $request->file('logo');
+            $filename = uniqid('ott_').'.'.$file->extension();
+            $file->move(public_path('assets/images'), $filename);
+            $ott->logo_url = $filename;
         }
 
         $ott->save();
@@ -52,6 +64,7 @@ class OttController extends Controller
     public function destroy(OttProvider $ott)
     {
         $ott->delete();
+
         return redirect()->route('admin.ott');
     }
 }
