@@ -46,7 +46,7 @@ class OttController extends Controller
             'logo' => 'nullable|image|mimes:png,jpg,jpeg,webp',
         ]);
 
-        $ott->name = $request->name;
+        $ott->name = $request->name;    
         $ott->is_active = $request->has('is_active');
 
         if ($request->hasFile('logo')) {
