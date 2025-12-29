@@ -3,16 +3,16 @@
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CastContentController;
+use App\Http\Controllers\Admin\CastController;
 use App\Http\Controllers\Admin\CastRoleController;
+use App\Http\Controllers\Admin\EpisodesController;
+use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\Admin\HomepageSectionController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\OttController;
+use App\Http\Controllers\Admin\SeasonController;
 use App\Http\Controllers\Admin\SubscriptionsController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Admin\EpisodesController;
-use App\Http\Controllers\Admin\CastController;
-use App\Http\Controllers\Admin\GenreController;
-use App\Http\Controllers\Admin\SeasonController;
 use Illuminate\Support\Facades\Route;
 
 // Route::middleware(['auth', 'role:user'])->group(function () {
@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/admindashboard', [AdminDashboardController::class, 'index'])
             ->name('admin.dashboard');
 
-        //Subscriptions
+        // Subscriptions
         Route::get('/subscriptions', [SubscriptionsController::class, 'index'])
             ->name('admin.subscriptions');
 
@@ -48,8 +48,8 @@ Route::prefix('admin')->group(function () {
 
         Route::delete('/subscriptions/{subscription}', [SubscriptionsController::class, 'destroy'])
             ->name('admin.subscriptions.delete');
-            
-        //Movie
+
+        // Movie
         Route::get('/movie', [MovieController::class, 'index'])
             ->name('admin.movie');
 
@@ -62,7 +62,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/movie/{movie}', [MovieController::class, 'destroy'])
             ->name('admin.movie.delete');
 
-        //Season
+        // Season
         Route::get('/season', [SeasonController::class, 'index'])
             ->name('admin.season');
 
@@ -75,20 +75,20 @@ Route::prefix('admin')->group(function () {
         Route::delete('/season/{season}', [SeasonController::class, 'destroy'])
             ->name('admin.season.delete');
 
-        //Episodes
+        // Episodes
         Route::get('/episodes', [EpisodesController::class, 'index'])
             ->name('admin.episodes');
 
         Route::post('/episodes', [EpisodesController::class, 'store'])
             ->name('admin.episodes.store');
 
-        Route::put('/episodes/{episodes}', [EpisodesController::class, 'update'])
+        Route::put('/episodes/{episode}', [EpisodesController::class, 'update'])
             ->name('admin.episodes.update');
 
-        Route::delete('/episodes/{episodes}', [EpisodesController::class, 'destroy'])
+        Route::delete('/episodes/{episode}', [EpisodesController::class, 'destroy'])
             ->name('admin.episodes.delete');
 
-        //Episodes
+        // Episodes
         Route::get('/homepagesection', [HomepageSectionController::class, 'index'])
             ->name('admin.homepagesection');
 
@@ -101,7 +101,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/homepagesection/{homepagesection}', [HomepageSectionController::class, 'destroy'])
             ->name('admin.homepagesection.delete');
 
-        //Ott
+        // Ott
         Route::get('/ott', [OttController::class, 'index'])
             ->name('admin.ott');
 
@@ -114,7 +114,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/ott/{ott}', [OttController::class, 'destroy'])
             ->name('admin.ott.delete');
 
-        //Cast - Roles
+        // Cast - Roles
         Route::get('/castrole', [CastRoleController::class, 'index'])
             ->name('admin.castrole');
 
@@ -127,7 +127,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/castrole/{castrole}', [CastRoleController::class, 'destroy'])
             ->name('admin.castrole.delete');
 
-        //Cast
+        // Cast
         Route::get('/cast', [CastController::class, 'index'])
             ->name('admin.cast');
 
@@ -139,8 +139,8 @@ Route::prefix('admin')->group(function () {
 
         Route::delete('/cast/{cast}', [CastController::class, 'destroy'])
             ->name('admin.cast.delete');
-        
-        //Cast - Content
+
+        // Cast - Content
         Route::get('/castcontent', [CastContentController::class, 'index'])
             ->name('admin.castcontent');
 
@@ -153,7 +153,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/castcontent/{castcontent}', [CastContentController::class, 'destroy'])
             ->name('admin.castcontent.delete');
 
-        //Genre
+        // Genre
         Route::get('/genre', [GenreController::class, 'index'])
             ->name('admin.genre');
 
@@ -166,7 +166,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/genre/{genre}', [GenreController::class, 'destroy'])
             ->name('admin.genre.delete');
 
-        //Users
+        // Users
         Route::get('/users', [UsersController::class, 'index'])
             ->name('admin.users');
 
@@ -178,7 +178,7 @@ Route::prefix('admin')->group(function () {
 
         Route::delete('/users/{users}', [UsersController::class, 'destroy'])
             ->name('admin.users.delete');
-        
+
     });
 
 });
