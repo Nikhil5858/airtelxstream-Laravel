@@ -147,11 +147,11 @@ Route::prefix('admin')->group(function () {
         Route::post('/castcontent', [CastContentController::class, 'store'])
             ->name('admin.castcontent.store');
 
-        Route::put('/castcontent/{castcontent}', [CastContentController::class, 'update'])
+        Route::put('/castcontent/{castContent}', [CastContentController::class, 'update'])
             ->name('admin.castcontent.update');
 
-        Route::delete('/castcontent/{castcontent}', [CastContentController::class, 'destroy'])
-            ->name('admin.castcontent.delete');
+        Route::delete('/castcontent/{castContent}', [CastContentController::class, 'destroy'])
+            ->name('admin.castcontent.destroy');
 
         // Genre
         Route::get('/genre', [GenreController::class, 'index'])
