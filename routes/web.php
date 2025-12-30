@@ -88,7 +88,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/episodes/{episode}', [EpisodesController::class, 'destroy'])
             ->name('admin.episodes.delete');
 
-        // Episodes
+        // Homepage Section
         Route::get('/homepagesection', [HomepageSectionController::class, 'index'])
             ->name('admin.homepagesection');
 
@@ -100,6 +100,17 @@ Route::prefix('admin')->group(function () {
 
         Route::delete('/homepagesection/{homepagesection}', [HomepageSectionController::class, 'destroy'])
             ->name('admin.homepagesection.delete');
+
+        Route::post('/homepagesection/reorder', [HomepageSectionController::class, 'reorder'])
+            ->name('admin.homepagesection.reorder');
+
+        // Homepage Section -> Movies
+        Route::get('/homepagesection/movies',[HomepageSectionController::class, 'movies'])
+            ->name('admin.homepagesection.movies');
+
+        Route::post('/homepagesection/movies/save',[HomepageSectionController::class, 'saveMovies'])
+            ->name('admin.homepagesection.movies.save');
+
 
         // Ott
         Route::get('/ott', [OttController::class, 'index'])
