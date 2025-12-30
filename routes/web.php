@@ -13,11 +13,16 @@ use App\Http\Controllers\Admin\OttController;
 use App\Http\Controllers\Admin\SeasonController;
 use App\Http\Controllers\Admin\SubscriptionsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Frontend\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-// Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth', 'role:user'])->group(function () {
+});
+Route::get('/', [DashboardController::class, 'index'])
+->name('dashboard');
 
-// });
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard');
 
 Route::prefix('admin')->group(function () {
 
@@ -105,12 +110,11 @@ Route::prefix('admin')->group(function () {
             ->name('admin.homepagesection.reorder');
 
         // Homepage Section -> Movies
-        Route::get('/homepagesection/movies',[HomepageSectionController::class, 'movies'])
+        Route::get('/homepagesection/movies', [HomepageSectionController::class, 'movies'])
             ->name('admin.homepagesection.movies');
 
-        Route::post('/homepagesection/movies/save',[HomepageSectionController::class, 'saveMovies'])
+        Route::post('/homepagesection/movies/save', [HomepageSectionController::class, 'saveMovies'])
             ->name('admin.homepagesection.movies.save');
-
 
         // Ott
         Route::get('/ott', [OttController::class, 'index'])
