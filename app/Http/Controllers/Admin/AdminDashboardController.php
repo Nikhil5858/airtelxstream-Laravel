@@ -2,12 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Movie;
+use App\Models\OttProvider;
+use App\Models\Users;
+
 class AdminDashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.admindashboard');
+        $stats = [
+            'totalMovies' => Movie::count(),
+            'totalUsers'  => Users::count(),
+            'activeSubs'  => Users::where('is_subscription_active', true)->count(),
+            'totalOtts'   => OttProvider::count(),
+        ];
+
+        $recentMovies = Movie::with('ott')
+            ->latest()
+            ->take(6)
+            ->get();
+
+        return view('admin.admindashboard', compact('stats', 'recentMovies'));
     }
 }
