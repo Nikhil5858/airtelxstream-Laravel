@@ -4,4 +4,6 @@
 
 @section('content')
 
+    @include('frontend.includes.hero_slider', ['banners' => $banners])
+
 @endsection

@@ -31,10 +31,10 @@ class Movie extends Model
         return $this->belongsTo(OttProvider::class);
     }
 
-    // public function watchlists()
-    // {
-    //     return $this->hasMany(Watchlist::class);
-    // }
+    public function watchlists()
+    {
+        return $this->hasMany(Watchlist::class);
+    }
 
     protected function posterUrl(): Attribute
     {

@@ -13,9 +13,10 @@ use App\Http\Controllers\Admin\OttController;
 use App\Http\Controllers\Admin\SeasonController;
 use App\Http\Controllers\Admin\SubscriptionsController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Frontend\DashboardController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
+use App\Http\Controllers\Frontend\DashboardController;
+use App\Http\Controllers\Frontend\WatchlistController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
@@ -31,8 +32,12 @@ Route::post('/auth/verify-otp', [FrontendAuthController::class, 'verifyOtp'])
 
 Route::post('/logout', [FrontendAuthController::class, 'logout'])
     ->name('logout');
-
-Route::middleware(['auth', 'role:user'])->group(function () {});
+    
+    
+Route::middleware(['auth', 'role:user'])->group(function () {     
+    Route::post('/movie/add-watchlist', [WatchlistController::class, 'store'])
+    ->name('watchlist.store');
+});
 
 Route::prefix('admin')->group(function () {
 
