@@ -18,6 +18,7 @@ use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\WatchlistController;
 use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
 use App\Http\Controllers\Frontend\SearchController;
+use App\Http\Controllers\Frontend\FreeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
@@ -49,6 +50,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::get('/search', [SearchController::class, 'index'])
         ->name('search');
+
+    Route::get('/free', [FreeController::class, 'index'])
+        ->name('free');
 
     Route::get('/search/results', [SearchController::class, 'results'])
     ->name('search.results');
