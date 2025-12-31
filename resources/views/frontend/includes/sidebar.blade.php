@@ -22,7 +22,7 @@
 
             @auth
                 <li>
-                    <a href="#">
+                    <a href="{{ route('profile') }}">
                         <i class="bi bi-person-circle"></i>
                         <span>Profile</span>
                         {{-- <span>{{ auth()->user()->name }}</span> --}}

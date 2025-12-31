@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
 use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\FreeController;
 use App\Http\Controllers\Frontend\MyplanController;
+use App\Http\Controllers\Frontend\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
@@ -56,10 +57,25 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         ->name('free');
 
     Route::get('/search/results', [SearchController::class, 'results'])
-    ->name('search.results');
+        ->name('search.results');
 
     Route::get('/myplan', [MyPlanController::class, 'index'])
-    ->name('myplan');
+        ->name('myplan');
+
+    Route::get('/profile', [ProfileController::class, 'index'])
+        ->name('profile');
+
+    Route::get('/profile/help', [ProfileController::class, 'help'])
+        ->name('profile.help');
+
+    Route::get('/profile/language', [ProfileController::class, 'language'])
+        ->name('profile.language');
+
+    Route::post('/profile/logout', [ProfileController::class, 'logout'])
+        ->name('profile.logout');
+
+    Route::post('/movie/remove-watchlist', [ProfileController::class, 'removeWatchlist'])
+        ->name('watchlist.remove');
 
 });
 
