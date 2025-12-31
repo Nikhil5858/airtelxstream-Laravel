@@ -1,5 +1,3 @@
-<form action="">
-
     <div class="sidebar">
         <div class="logo mt-2">
             <img src="{{ asset('assets/images/xsteamplay.png') }}" class="brand">
@@ -10,7 +8,7 @@
             <li><a type="button" href="{{ route('search') }}"><i class="bi bi-search"></i><span>Search</span></a></li>
             <li><a type="button" href="{{ url('ott') }}"><i class="bi bi-layers"></i><span>OTTs</span></a></li>
             <li><a type="button" href="{{ route('free') }}"><i class="bi bi-play-circle"></i><span>Free</span></a></li>
-            <li><a type="button" href="{{ url('myplan') }}"><i class="bi bi-play-btn"></i><span>My Plans</span></a>
+            <li><a type="button" href="{{ route('myplan') }}"><i class="bi bi-play-btn"></i><span>My Plans</span></a>
             </li>
 
             @guest
@@ -39,4 +37,3 @@
             </li>
         </ul>
     </div>
-</form>

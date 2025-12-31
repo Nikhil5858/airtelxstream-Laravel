@@ -6,8 +6,6 @@
 
     @include('frontend.includes.hero_slider', ['banners' => $banners])
     @include('frontend.includes.ott')
-    @include('frontend.includes.wifi_banner')
-
     @foreach ($sections as $section)
         @if ($section->movies->isEmpty())
             @continue
