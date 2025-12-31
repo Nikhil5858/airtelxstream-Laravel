@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\WatchlistController;
 use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
+use App\Http\Controllers\Frontend\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
@@ -45,6 +46,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::get('/ott/{ott}', [OttController::class, 'show'])
         ->name('ott.show');
+
+    Route::get('/search', [SearchController::class, 'index'])
+        ->name('search');
+
+    Route::get('/search/results', [SearchController::class, 'results'])
+    ->name('search.results');
+
 
 
 });
