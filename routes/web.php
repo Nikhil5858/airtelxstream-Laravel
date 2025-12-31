@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\WatchlistController;
+use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
@@ -35,8 +36,17 @@ Route::post('/logout', [FrontendAuthController::class, 'logout'])
     
     
 Route::middleware(['auth', 'role:user'])->group(function () {     
+
     Route::post('/movie/add-watchlist', [WatchlistController::class, 'store'])
-    ->name('watchlist.store');
+        ->name('watchlist.store');
+
+    Route::get('/genre/{genre}', [FrontendGenreController::class, 'show'])
+        ->name('genre.show');
+
+    Route::get('/ott/{ott}', [OttController::class, 'show'])
+        ->name('ott.show');
+
+
 });
 
 Route::prefix('admin')->group(function () {

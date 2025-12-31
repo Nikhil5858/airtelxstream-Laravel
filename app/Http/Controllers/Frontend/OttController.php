@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
+use App\Models\OttProvider;
 
 class OttController
 {
-    //
+    public function show(OttProvider $ott)
+    {
+        
+    }
 }

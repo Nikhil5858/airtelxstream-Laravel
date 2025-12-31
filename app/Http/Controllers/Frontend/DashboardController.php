@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Genre;
 use App\Models\Movie;
+use App\Models\OttProvider;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -25,6 +27,14 @@ class DashboardController extends Controller
             ->orderByDesc('id')
             ->get();
 
-        return view('frontend.dashboard', compact('banners'));
+        $genres = Genre::query()
+            ->orderBy('name')
+            ->get();
+
+        $otts = OttProvider::query()
+            ->where('is_active', true)
+            ->get();
+
+        return view('frontend.dashboard', compact('banners','genres','otts'));
     }
 }
