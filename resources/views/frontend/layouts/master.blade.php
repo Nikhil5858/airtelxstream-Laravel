@@ -9,7 +9,8 @@
 
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/xsteamplay.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="base-url" content="{{ url('') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
@@ -38,6 +39,8 @@
         {{-- Footer --}}
         @include('frontend.includes.footer')
     </div>
+    {{-- Auth Modals --}}
+    @include('frontend.auth.login')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>

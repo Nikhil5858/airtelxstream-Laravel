@@ -15,14 +15,24 @@ use App\Http\Controllers\Admin\SubscriptionsController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Frontend\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
 
-Route::middleware(['auth', 'role:user'])->group(function () {
-});
 Route::get('/', [DashboardController::class, 'index'])
-->name('dashboard');
+    ->name('dashboard');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
+
+Route::post('/auth/send-otp', [FrontendAuthController::class, 'sendOtp'])
+    ->name('auth.sendOtp');
+
+Route::post('/auth/verify-otp', [FrontendAuthController::class, 'verifyOtp'])
+    ->name('auth.verifyOtp');
+
+Route::post('/logout', [FrontendAuthController::class, 'logout'])
+    ->name('logout');
+
+Route::middleware(['auth', 'role:user'])->group(function () {});
 
 Route::prefix('admin')->group(function () {
 

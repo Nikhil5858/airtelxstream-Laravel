@@ -13,7 +13,7 @@
                  You can also use your Broadband/DTH registered numbers to login
              </p>
 
-             <form>
+             <form id="loginForm" novalidate>
                  <label for="email">Email :</label>
                  <div class="d-flex align-items-center gap-2 mb-2 mt-1">
                      <input id="emailInput" type="email" class="form-control bg-transparent text-white"
@@ -65,7 +65,7 @@
              <span id="otpError" style="color:red; font-size:14px;"></span>
              <p class="text-center mb-4" id="resendTimer" style="color:#b9b9b9;">Resend OTP in (0:30)</p>
 
-             <button class="btn w-100" style="background:#ffffff; color:#000; border-radius:8px; padding:10px;">
+             <button class="btn w-100" type="button" style="background:#ffffff; color:#000; border-radius:8px; padding:10px;">
                  VERIFY
              </button>
 
