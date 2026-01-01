@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\OttProvider;
+use App\Traits\HandlesFileUpload;
 use Illuminate\Http\Request;
 
 class OttController extends Controller
 {
+    use HandlesFileUpload;
+
     public function index()
     {
         $otts = OttProvider::all();
@@ -22,18 +25,10 @@ class OttController extends Controller
             'logo' => 'required|image|mimes:png,jpg,jpeg,webp',
         ]);
 
-        $filename = null;
-
-        if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = uniqid('ott_').'.'.$file->extension();
-            $file->move(public_path('assets/images'), $filename);
-        }
-
         OttProvider::create([
             'name' => $request->name,
-            'logo_url' => $filename,
-            'is_active' => $request->has('is_active'),
+            'logo_url' => $this->uploadFile($request->file('logo'), 'images', 'ott'),
+            'is_active' => $request->boolean('is_active'),
         ]);
 
         return redirect()->route('admin.ott');
@@ -46,14 +41,12 @@ class OttController extends Controller
             'logo' => 'nullable|image|mimes:png,jpg,jpeg,webp',
         ]);
 
-        $ott->name = $request->name;    
-        $ott->is_active = $request->has('is_active');
+        $ott->name = $request->name;
+        $ott->is_active = $request->boolean('is_active');
 
-        if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = uniqid('ott_').'.'.$file->extension();
-            $file->move(public_path('assets/images'), $filename);
-            $ott->logo_url = $filename;
+        $logo = $this->uploadFile($request->file('logo'), 'images', 'ott');
+        if ($logo) {
+            $ott->logo_url = $logo;
         }
 
         $ott->save();
