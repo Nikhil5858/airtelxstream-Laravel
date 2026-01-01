@@ -114,8 +114,77 @@
                     </div>
 
                 </div>
+            @else
+                <div id="about" class="smv-tab-content active">
+                    <h3 class="text-white mb-4">
+                        About {{ $movie->title }}
+                    </h3>
+
+                    <div class="row text-white">
+                        <div class="col-md-6 mb-3">
+                            <strong>Genre</strong>
+                            <p>{{ $movie->genre->name ?? '' }}</p>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Language</strong>
+                            <p>{{ $movie->language }}</p>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <strong>Release Year</strong>
+                            <p>{{ $movie->release_year }}</p>
+                        </div>
+                    </div>
+
+                    <hr class="border-secondary">
+
+                    <p>{!! nl2br(e($movie->description)) !!}</p>
+                </div>
             @endif
         </div>
+
+        <div id="cast" class="smv-tab-content">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="text-white m-0">Starring</h3>
+            </div>
+
+            @if ($cast->isNotEmpty())
+                <div class="cast-section">
+
+                    <div class="cast-scroll-container">
+                        <div class="cast-scroller">
+                            <div class="cast-scroll-inner">
+
+                                @foreach ($cast as $c)
+                                    <div class="cast-card-wrapper">
+                                        <a href="{{ route('cast.show', $c->id) }}" class="cast-link">
+                                            <div class="cast-card">
+                                                <img src="{{ asset($c->profile_image_url) }}"
+                                                    alt="{{ $c->name }}">
+
+                                                <div class="cast-overlay">
+                                                    <h5 class="cast-title">{{ $c->name }}</h5>
+                                                    <div class="cast-badges">
+                                                        <span class="cast-badge role">
+                                                            {{ $c->role_name }}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <p class="text-white-50">No cast information available.</p>
+            @endif
+        </div>
+
 
     </div>
 
@@ -195,6 +264,4 @@
             });
         });
     </script>
-
-    @include('frontend.includes.upper_footer')
 @endsection

@@ -25,7 +25,7 @@
 
                     @foreach ($ott->movies as $movie)
                         <div class="movie-card-wrapper">
-                            <a href="{{ url('/movie/show?id=' . $movie->id) }}" class="movie-link">
+                            <a href="{{ url('/movie/show/' . $movie->id) }}" class="movie-link">
                                 <div class="movie-card">
 
                                     <img

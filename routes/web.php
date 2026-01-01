@@ -13,17 +13,19 @@ use App\Http\Controllers\Admin\OttController;
 use App\Http\Controllers\Admin\SeasonController;
 use App\Http\Controllers\Admin\SubscriptionsController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
 use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\WatchlistController;
-use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
 use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\FreeController;
 use App\Http\Controllers\Frontend\MyplanController;
 use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
+use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
 use App\Http\Controllers\Frontend\OttController as FrontendOttController;
 use App\Http\Controllers\Frontend\MovieController as FrontendMovieController;
+use App\Http\Controllers\Frontend\CastController as FrontendCastController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\SeeAllController;
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
@@ -90,6 +92,15 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::get('/movie/show/{movie}', [FrontendMovieController::class, 'show'])
         ->name('movie.show');
+
+    Route::get('/seeall/section/{section}', [SeeAllController::class, 'section'])
+        ->name('seeall.section');
+
+    Route::get('/seeall/new-releases', [SeeAllController::class, 'newReleases'])
+        ->name('seeall.newReleases');
+
+    Route::get('/cast/show/{cast}', [FrontendCastController::class, 'show'])
+        ->name('cast.show');
 
 });
 

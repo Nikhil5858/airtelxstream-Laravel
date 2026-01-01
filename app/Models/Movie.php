@@ -36,9 +36,14 @@ class Movie extends Model
         return $this->hasMany(Watchlist::class);
     }
 
+    public function homepageSections()
+    {
+        return $this->belongsToMany(HomepageSection::class,'homepage_section_movies');
+    }
+
     public function cast()
     {
-        return $this->belongsToMany(Cast::class,'castcontent','movie_id','cast_id')
+        return $this->belongsToMany(Cast::class, 'castcontent', 'movie_id', 'cast_id')
             ->withPivot('cast_roles_id');
     }
 
