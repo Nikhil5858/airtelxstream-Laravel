@@ -19,6 +19,11 @@ class OttProvider extends Model
         'is_active' => 'boolean'
     ];
 
+    public function movies()
+    {
+        return $this->hasMany(Movie::class, 'ott_id');
+    }
+
     protected function logoUrl(): Attribute
     {
         return Attribute::make(

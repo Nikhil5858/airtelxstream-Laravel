@@ -9,12 +9,6 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /** Profile main page */
     public function index()
     {
         $user = Auth::user();
@@ -31,19 +25,16 @@ class ProfileController extends Controller
         return view('frontend.profile.profile', compact('user', 'watchlist'));
     }
 
-    /** Help page */
     public function help()
     {
         return view('frontend.profile.help');
     }
 
-    /** Language page */
     public function language()
     {
         return view('frontend.profile.language');
     }
 
-    /** Logout */
     public function logout(Request $request)
     {
         Auth::logout();
@@ -53,7 +44,6 @@ class ProfileController extends Controller
         return redirect('/');
     }
 
-    /** Remove from watchlist */
     public function removeWatchlist(Request $request)
     {
         $request->validate([

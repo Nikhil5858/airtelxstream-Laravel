@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\FreeController;
 use App\Http\Controllers\Frontend\MyplanController;
 use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Frontend\OttController as FrontendOttController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
@@ -76,6 +77,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::post('/movie/remove-watchlist', [ProfileController::class, 'removeWatchlist'])
         ->name('watchlist.remove');
+
+    Route::get('/ott', [FrontendOttController::class, 'index'])
+        ->name('ott.index');
+
+    Route::get('/ott/{ott}', [FrontendOttController::class, 'show'])
+        ->name('ott.show');
 
 });
 

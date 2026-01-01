@@ -6,7 +6,7 @@
         <ul class="menu">
             <li><a type="button" href="{{ route('dashboard') }}"><i class="bi bi-house"></i><span>Home</span></a></li>
             <li><a type="button" href="{{ route('search') }}"><i class="bi bi-search"></i><span>Search</span></a></li>
-            <li><a type="button" href="{{ url('ott') }}"><i class="bi bi-layers"></i><span>OTTs</span></a></li>
+            <li><a type="button" href="{{ route('ott.index') }}"><i class="bi bi-layers"></i><span>OTTs</span></a></li>
             <li><a type="button" href="{{ route('free') }}"><i class="bi bi-play-circle"></i><span>Free</span></a></li>
             <li><a type="button" href="{{ route('myplan') }}"><i class="bi bi-play-btn"></i><span>My Plans</span></a>
             </li>
