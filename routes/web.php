@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\FreeController;
 use App\Http\Controllers\Frontend\MyplanController;
 use App\Http\Controllers\Frontend\ProfileController;
 use App\Http\Controllers\Frontend\OttController as FrontendOttController;
+use App\Http\Controllers\Frontend\MovieController as FrontendMovieController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])
@@ -85,7 +86,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         ->name('ott.show');
 
     Route::get('/genre/{genre}', [FrontendGenreController::class, 'show'])
-    ->name('genre.show');
+        ->name('genre.show');
+
+    Route::get('/movie/show/{movie}', [FrontendMovieController::class, 'show'])
+        ->name('movie.show');
 
 });
 

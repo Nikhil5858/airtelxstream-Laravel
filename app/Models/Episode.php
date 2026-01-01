@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Episode extends Model
 {
     protected $fillable = [
+        'movie_id',
         'season_id',
         'episode_number',
         'title',
@@ -19,6 +20,11 @@ class Episode extends Model
     public function season()
     {
         return $this->belongsTo(Seasons::class);
+    }
+
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
     }
 
     protected function posterImg(): Attribute

@@ -36,6 +36,12 @@ class Movie extends Model
         return $this->hasMany(Watchlist::class);
     }
 
+    public function cast()
+    {
+        return $this->belongsToMany(Cast::class,'castcontent','movie_id','cast_id')
+            ->withPivot('cast_roles_id');
+    }
+
     protected function posterUrl(): Attribute
     {
         return Attribute::make(
