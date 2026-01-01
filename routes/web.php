@@ -84,6 +84,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/ott/{ott}', [FrontendOttController::class, 'show'])
         ->name('ott.show');
 
+    Route::get('/genre/{genre}', [FrontendGenreController::class, 'show'])
+    ->name('genre.show');
+
 });
 
 Route::prefix('admin')->group(function () {
