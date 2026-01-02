@@ -1,8 +1,7 @@
 @foreach ($sections as $section)
-    @if ($section->movies->isEmpty())
+    @if ($section->type == 'top10' || $section->movies->isEmpty())
         @continue
     @endif
-
     <div class="movie-section mt-3">
         <div class="d-flex justify-content-between align-items-center">
             <h3 class="text-white m-0">{{ $section->title }}</h3>
