@@ -61,9 +61,10 @@
                                     @endforeach
                                 </ul>
 
-                                @if ($sectionMovies->isEmpty())
-                                    <p class="text-muted mt-2">No movies selected yet.</p>
-                                @endif
+                                <p id="emptyMessage" class="text-muted mt-2"
+                                    style="{{ $sectionMovies->isEmpty() ? '' : 'display:none' }}">
+                                    No movies selected yet.
+                                </p>
 
                             </div>
                         </div>
@@ -102,6 +103,7 @@
                 document.getElementById("movieSortable").appendChild(li);
                 bindDrag(li);
                 bindRemove(li);
+                toggleEmptyMessage();
             });
         });
 
@@ -109,8 +111,20 @@
         function bindRemove(li) {
             li.querySelector(".remove-movie").addEventListener("click", () => {
                 li.remove();
+                toggleEmptyMessage();
             });
         }
+
+
+        function toggleEmptyMessage() {
+            const list = document.getElementById("movieSortable");
+            const msg = document.getElementById("emptyMessage");
+
+            if (!msg) return;
+
+            msg.style.display = list.children.length === 0 ? "block" : "none";
+        }
+
 
         /* DRAG & DROP */
         let dragged = null;
@@ -143,5 +157,6 @@
             bindDrag(li);
             bindRemove(li);
         });
+        toggleEmptyMessage();
     </script>
 @endsection

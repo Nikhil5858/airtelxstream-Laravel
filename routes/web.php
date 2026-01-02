@@ -69,6 +69,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/myplan', [MyPlanController::class, 'index'])
         ->name('myplan');
 
+    Route::post('/myplan/subscribe', [MyPlanController::class, 'subscribe'])
+        ->middleware('auth');
+
     Route::get('/profile', [ProfileController::class, 'index'])
         ->name('profile');
 

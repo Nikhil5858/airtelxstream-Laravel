@@ -73,6 +73,36 @@
                         </div>
                     </div>
                 @endforeach
+                @if (session('success'))
+                    <div class="modal fade" id="successModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content bg-dark text-light">
+
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title">Subscription Successful</h5>
+                                </div>
+
+                                <div class="modal-body text-center">
+                                    <p class="mb-4">
+                                        {{ session('success') }}
+                                    </p>
+
+                                    <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">
+                                        OK
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if (session('success'))
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            new bootstrap.Modal(document.getElementById('successModal')).show();
+                        });
+                    </script>
+                @endif
 
             </div>
         </div>
