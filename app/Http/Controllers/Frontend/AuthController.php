@@ -57,7 +57,7 @@ class AuthController extends Controller
 
         $user = Users::where('email', $request->email)->first();
 
-        if (! $user) {
+        if (!$user) {
             return response()->json(['message' => 'Invalid user'], 401);
         }
 

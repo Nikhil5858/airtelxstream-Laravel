@@ -13,19 +13,23 @@ use App\Http\Controllers\Admin\OttController;
 use App\Http\Controllers\Admin\SeasonController;
 use App\Http\Controllers\Admin\SubscriptionsController;
 use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Frontend\DashboardController;
-use App\Http\Controllers\Frontend\WatchlistController;
-use App\Http\Controllers\Frontend\SearchController;
-use App\Http\Controllers\Frontend\FreeController;
-use App\Http\Controllers\Frontend\MyplanController;
-use App\Http\Controllers\Frontend\ProfileController;
 use App\Http\Controllers\Frontend\AuthController as FrontendAuthController;
-use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
-use App\Http\Controllers\Frontend\OttController as FrontendOttController;
-use App\Http\Controllers\Frontend\MovieController as FrontendMovieController;
 use App\Http\Controllers\Frontend\CastController as FrontendCastController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\DashboardController;
+use App\Http\Controllers\Frontend\FreeController;
+use App\Http\Controllers\Frontend\GenreController as FrontendGenreController;
+use App\Http\Controllers\Frontend\MovieController as FrontendMovieController;
+use App\Http\Controllers\Frontend\MyplanController;
+use App\Http\Controllers\Frontend\OttController as FrontendOttController;
+use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\SeeAllController;
+use App\Http\Controllers\Frontend\WatchlistController;
+use Illuminate\Support\Facades\Route;
+
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
@@ -41,9 +45,8 @@ Route::post('/auth/verify-otp', [FrontendAuthController::class, 'verifyOtp'])
 
 Route::post('/logout', [FrontendAuthController::class, 'logout'])
     ->name('logout');
-    
-    
-Route::middleware(['auth', 'role:user'])->group(function () {     
+
+Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::post('/movie/add-watchlist', [WatchlistController::class, 'store'])
         ->name('watchlist.store');
