@@ -108,6 +108,4 @@
         </div>
     </div>
 
-    @include('frontend.includes.upper_footer')
-
 @endsection

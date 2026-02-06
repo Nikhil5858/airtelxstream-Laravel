@@ -46,7 +46,7 @@ Route::post('/auth/verify-otp', [FrontendAuthController::class, 'verifyOtp'])
 Route::post('/logout', [FrontendAuthController::class, 'logout'])
     ->name('logout');
 
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::post('/movie/add-watchlist', [WatchlistController::class, 'store'])
         ->name('watchlist.store');
