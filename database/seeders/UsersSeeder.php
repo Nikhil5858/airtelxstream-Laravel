@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
         Users::create([
             'name' => 'Admin',
             'email' => 'admin@airtelxstream.com',
-            'password' => Hash::make('1'),
+            'password' => Hash::make('admin'),
             'role' => 'admin',
             'is_active' => true,
         ]);
