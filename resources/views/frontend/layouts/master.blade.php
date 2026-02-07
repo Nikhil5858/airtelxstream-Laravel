@@ -45,6 +45,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
+    @if (session('showLoginModal'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const modalEl = document.getElementById('loginModal');
+                if (modalEl) {
+                    const modal = new bootstrap.Modal(modalEl);
+                    modal.show();
+                }
+            });
+        </script>
+    @endif
+
     @stack('scripts')
 </body>
 
